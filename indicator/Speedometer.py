@@ -19,6 +19,13 @@ class Speedometer(QWidget):
         self.speed_label.setStyleSheet("color: white; font-size: 11px; background-color: transparent; font-weight: bold; padding: 3px;")
         self.speed_label.setFixedSize(50, 30)
         self.speed_label.move(40, self.height() - 80)
+        
+        self.type_label = QLabel(self)
+        self.type_label.setText("Ground" if self.speed_type == "Ground Speed" else "Air")
+        self.type_label.setAlignment(Qt.AlignCenter)
+        self.type_label.setStyleSheet("color: white; font-size: 14px; background-color: transparent; font-weight: bold;")
+        self.type_label.setFixedSize(60, 20)
+        self.type_label.move(self.width() // 2 - 30, self.height() // 2 - 60)  
 
     def update_speed(self, speed=None):
         if speed is not None:
@@ -32,6 +39,7 @@ class Speedometer(QWidget):
 
     def resizeEvent(self, event):
         self.speed_label.move(40, self.height() - 80)
+        self.type_label.move(self.width() // 2 - 30, self.height() // 2 - 60)
 
     def paintEvent(self, event):
         painter = QPainter(self)

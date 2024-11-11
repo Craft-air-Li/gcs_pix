@@ -4,7 +4,7 @@ from PySide6.QtWidgets import (
     QApplication, QMainWindow, QVBoxLayout, QHBoxLayout, QLabel, QComboBox, QLineEdit, QWidget, QFrame, QSpacerItem, QSizePolicy
 )
 from PySide6.QtCore import QTimer, Qt
-from PySide6.QtGui import QPainter, QPen, QPainterPath
+from PySide6.QtGui import QPainter, QPen, QPainterPath, QIcon
 sys.path.append(os.path.join(os.path.dirname(__file__), "drone_connect_control"))
 
 from indicator.map import MapWidget
@@ -36,7 +36,8 @@ class RoundedFrame(QFrame):
 class GCSMainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Ground Control Station")
+        self.setWindowTitle("Ground Control Station for PIXHAWL or SITL")
+        self.setWindowIcon(QIcon("indicator/image/main.png"))
         self.setFixedSize(1400, 850)
         self.setFocusPolicy(Qt.StrongFocus) 
         self.setStyleSheet("background-color: #000001;")
@@ -75,9 +76,6 @@ class GCSMainWindow(QMainWindow):
         
         self.drone_status_widget = DroneStatusWidget(self.vehicle)  
         left_layout.addWidget(self.drone_status_widget)  
-
-        spacer_bottom = QSpacerItem(20, 100, QSizePolicy.Minimum, QSizePolicy.Expanding)
-        left_layout.addItem(spacer_bottom)
         
         main_layout.addWidget(self.info_pannel, 1)
 
