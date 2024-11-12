@@ -234,7 +234,7 @@ class SystemStatusPanel(QWidget):
     def __init__(self, vehicle=None):
         super().__init__()
         self.setStyleSheet("background-color: black;")
-        self.setFixedSize(475, 100)
+        self.setFixedSize(480, 100)
         layout = QHBoxLayout()
         
         self.gps_widget = GPSStatusWidget(vehicle)

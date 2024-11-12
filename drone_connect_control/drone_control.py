@@ -11,21 +11,21 @@ class DroneControlPanel(QWidget):
         self.vehicle = vehicle
 
         self.status_label = QLabel("Disarmed")
-        self.status_label.setFixedSize(130, 80)
+        self.status_label.setFixedSize(140, 90)
         self.status_label.setFont(QFont("Extra Bold"))
         self.status_label.setStyleSheet("font-size: 20px; font-weight: 900; border: 1px solid white")
         self.status_label.setAlignment(Qt.AlignCenter)
         self.update_status_color("Disarmed")
 
         self.mode_label = QLabel("Mode: Unknown")
-        self.mode_label.setFixedSize(130, 80)
+        self.mode_label.setFixedSize(140, 90)
         self.mode_label.setFont(QFont("Extra Bold"))
         self.mode_label.setStyleSheet("font-size: 20px; font-weight: 900; border: 1px solid white")
         self.mode_label.setAlignment(Qt.AlignCenter)
         self.update_mode_color("Unknown")
 
         self.mode_selection_widget = DroneModeSelectionWidget(self.vehicle)
-        self.mode_selection_widget.setFixedSize(130, 80)  
+        self.mode_selection_widget.setFixedSize(140, 90)  
 
         self.status_timer = QTimer()
         self.status_timer.timeout.connect(self.update_status)

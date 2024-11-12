@@ -219,7 +219,7 @@ class DroneStatusWidget(QWidget):
         else:
             self.pre_label.setText("Flight Preparedness: Not Ready")
             self.pre_label.setStyleSheet("color: red; background-color: orange; border: 1px solid white; border-radius: 4px;")
-            self.pre_label.setFont(QFont("Arial", 8, QFont.Bold))
+            self.pre_label.setFont(QFont("Arial", 7, QFont.Bold))
 
         self.update_mode_availability()
 
@@ -231,7 +231,7 @@ class DroneStatusWidget(QWidget):
         else:
             self.guide_mode_label.setText("Guide Mode: Not Available")
             self.guide_mode_label.setStyleSheet("background-color: darkred; color: white; border: 1px solid white; border-radius: 4px;")
-            self.guide_mode_label.setFont(QFont("Arial", 8, QFont.Bold))
+            self.guide_mode_label.setFont(QFont("Arial", 7, QFont.Bold))
 
         if self.vehicle.ekf_ok and self.vehicle.battery.voltage >= 5.0:
             self.alt_hold_mode_label.setText("Alt Hold Mode: Available")
@@ -240,7 +240,7 @@ class DroneStatusWidget(QWidget):
         else:
             self.alt_hold_mode_label.setText("Alt Hold Mode: Not Available")
             self.alt_hold_mode_label.setStyleSheet("background-color: darkred; color: white; border: 1px solid white; border-radius: 4px;")
-            self.alt_hold_mode_label.setFont(QFont("Arial", 8, QFont.Bold))
+            self.alt_hold_mode_label.setFont(QFont("Arial", 7, QFont.Bold))
 
         if self.vehicle.ekf_ok and self.vehicle.channels:
             self.land_mode_label.setText("Land Mode: Available")
@@ -249,7 +249,7 @@ class DroneStatusWidget(QWidget):
         else:
             self.land_mode_label.setText("Land Mode: Not Available")
             self.land_mode_label.setStyleSheet("background-color: darkred; color: white; border: 1px solid white; border-radius: 4px;")
-            self.land_mode_label.setFont(QFont("Arial", 8, QFont.Bold))
+            self.land_mode_label.setFont(QFont("Arial", 7, QFont.Bold))
 
         if self.vehicle.battery.voltage >= 5.0:
             self.stabilize_mode_label.setText("Stabilize Mode: Available")
@@ -258,4 +258,4 @@ class DroneStatusWidget(QWidget):
         else:
             self.stabilize_mode_label.setText("Stabilize Mode: Not Available")
             self.stabilize_mode_label.setStyleSheet("background-color: darkred; color: white; border: 1px solid white; border-radius: 4px;")
-            self.stabilize_mode_label.setFont(QFont("Arial", 8, QFont.Bold))
+            self.stabilize_mode_label.setFont(QFont("Arial", 7, QFont.Bold))
