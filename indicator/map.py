@@ -24,64 +24,59 @@ class MapWidget(QWidget):
         lat, lon, heading = self.get_gps_info()
 
         html_content = f"""
-        <!DOCTYPE html>
-        <html>
-        <head>
-            <style>
-                html, body {{
-                    height: 100%;
-                    margin: 0;
-                    padding: 0;
-                    overflow: hidden;
-                }}
-                #mapid {{
-                    width: 100%;
-                    height: 100%;  
-                    background: rgba(255, 255, 255, 0);
-                }}
-                .custom-icon {{
-                    font-size: 24px;
-                    color: #ff0000; 
-                    transform-origin: center center; 
-                }}
-            </style>
-            <script src="https://kit.fontawesome.com/bed121fae5.js" crossorigin="anonymous"></script>
-            <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-        </head>
-        <body>
-            <div id="mapid"></div>
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        html, body {{
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }}
+        #mapid {{
+            width: 100%;
+            height: 100%;  
+            background: rgba(255, 255, 255, 0);
+        }}
+    </style>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+</head>
+<body>
+    <div id="mapid"></div>
 
-            <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-            <script>
-                document.addEventListener("DOMContentLoaded", function() {{
-                    var map = L.map('mapid', {{ zoomControl: false }}).setView([{lat}, {lon}], 18);
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {{
+            var map = L.map('mapid', {{ zoomControl: false }}).setView([{lat}, {lon}], 18);
 
-                    L.tileLayer('https://{{s}}.tile.openstreetmap.org/{{z}}/{{x}}/{{y}}.png', {{
-                        maxZoom: 19,
-                    }}).addTo(map);
+            L.tileLayer('https://{{s}}.tile.openstreetmap.org/{{z}}/{{x}}/{{y}}.png', {{
+                maxZoom: 19,
+            }}).addTo(map);
 
-                    var customIcon = L.divIcon({{
-                        html: '<i class="fa-solid fa-jet-fighter-up custom-icon" id="drone-icon"></i>',
-                        className: '',
-                        iconSize: [70, 70],  
-                        iconAnchor: [15, 15]  
-                    }});
+            var customIcon = L.divIcon({{
+                html: '<img src="https://i.postimg.cc/k424HYgn/icon.png" id="drone-icon" style="width: 40px; height: 40px;" />',
+                className: '',
+                iconSize: [40, 40],  
+                iconAnchor: [20, 20]  
+            }});
 
-                    var marker = L.marker([{lat}, {lon}], {{ icon: customIcon }}).addTo(map);
+            var marker = L.marker([{lat}, {lon}], {{ icon: customIcon }}).addTo(map);
 
-                    window.updateMarker = function(lat, lon, heading) {{
-                        marker.setLatLng([lat, lon]);
-                        map.setView([lat, lon], map.getZoom());
-                        var iconElement = document.getElementById("drone-icon");
-                        iconElement.style.transform = "rotate(" + heading + "deg)"; 
-                    }}
-                }});
-            </script>
-        </body>
-        </html>
-        """
+            window.updateMarker = function(lat, lon, heading) {{
+                marker.setLatLng([lat, lon]);
+                map.setView([lat, lon], map.getZoom());
+                var iconElement = document.getElementById("drone-icon");
+                iconElement.style.transform = "rotate(" + heading + "deg)"; 
+            }}
+        }});
+    </script>
+</body>
+</html>
+"""
 
         self.view.setHtml(html_content)
+
 
     def get_gps_info(self):
         if self.vehicle:
