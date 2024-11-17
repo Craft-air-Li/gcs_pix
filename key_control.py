@@ -9,13 +9,13 @@ def handle_alt_hold_keys(event, vehicle):
     yaw = 1500
 
     if event.key() == Qt.Key_W:
-        pitch = 1400  
+        pitch = 1300  
     elif event.key() == Qt.Key_S:
-        pitch = 1600  
+        pitch = 1700  
     elif event.key() == Qt.Key_A:
-        roll = 1400  
+        roll = 1300  
     elif event.key() == Qt.Key_D:
-        roll = 1600  
+        roll = 1700  
     elif event.key() == Qt.Key_Q:
         throttle = 1800  
     elif event.key() == Qt.Key_E:
@@ -64,9 +64,9 @@ def handle_guided_keys(event, vehicle):
     elif event.key() == Qt.Key_A:
         vy = -2
     elif event.key() == Qt.Key_D:
-        vy = 1
+        vy = 2
     elif event.key() == Qt.Key_Q:
-        vz = -1
+        vz = -2
     elif event.key() == Qt.Key_E:
         vz = 2
     send_ned_velocity(vehicle, vx, vy, vz)

@@ -140,7 +140,7 @@ class DroneControlPanel(QWidget):
 
     def alt_hold_takeoff(self):
         target_altitude = 2  
-        self.vehicle.mode = VehicleMode("ALT_HOLD")
+        self.vehicle.mode = VehicleMode("GUIDED")
         self.vehicle.armed = True
         while not self.vehicle.armed:
             print("Waiting for drone to be armed...")
